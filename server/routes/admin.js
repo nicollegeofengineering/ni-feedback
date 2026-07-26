@@ -65,9 +65,7 @@ function capitalize(str) {
 
 router.get('/dashboard', auth, async (req, res) => {
   try {
-    if(req.user.role!=="Admin"){
-      return res.status(401).json({message:"Invalid role to access."})
-    }
+    
     const { department, semester, year } = req.query;
     const match = {};
     if (department) match.department = department;
@@ -228,9 +226,7 @@ router.get('/dashboard', auth, async (req, res) => {
 // 3. Subject List (unchanged)
 // ------------------------------------------------------------
 router.get('/subjects', auth, async (req, res) => {
-  if(req.user.role!=="Admin"){
-      return res.status(401).json({message:"Invalid role to access."})
-    }
+  
   try {
     const { department, year, semester } = req.query;
 
@@ -301,9 +297,7 @@ router.get('/subjects', auth, async (req, res) => {
 // 4. Subject Detailed Report (updated with new keys)
 // ------------------------------------------------------------
 router.get('/subject-details', auth, async (req, res) => {
-  if(req.user.role!=="Admin"){
-      return res.status(401).json({message:"Invalid role to access."})
-    }
+  
   try {
     const { subjectCode } = req.query;
     if (!subjectCode) return res.status(400).json({ message: 'Subject code is required' });
@@ -339,9 +333,7 @@ router.get('/subject-details', auth, async (req, res) => {
 // 5. Student Management (unchanged)
 // ------------------------------------------------------------
 router.get('/students', auth, async (req, res) => {
-  if(req.user.role!=="Admin"){
-      return res.status(401).json({message:"Invalid role to access."})
-    }
+  
   try {
     const { year, department, submitted } = req.query;
 
@@ -388,9 +380,7 @@ router.get('/students', auth, async (req, res) => {
 });
 
 router.get('/students/:regno/feedback', auth, async (req, res) => {
-  if(req.user.role!=="Admin"){
-      return res.status(401).json({message:"Invalid role to access."})
-    }
+  
   try {
     const { regno } = req.params;
 
@@ -470,9 +460,7 @@ router.get('/students/:regno/feedback', auth, async (req, res) => {
 });
 
 router.get('/students/statistics', auth, async (req, res) => {
-  if(req.user.role!=="Admin"){
-      return res.status(401).json({message:"Invalid role to access."})
-    }
+  
   try {
     const totalStudents = await Student.countDocuments();
 
@@ -516,9 +504,7 @@ router.get('/students/statistics', auth, async (req, res) => {
 });
 
 router.get('/students/export', auth, async (req, res) => {
-  if(req.user.role!=="Admin"){
-      return res.status(401).json({message:"Invalid role to access."})
-    }
+ 
   try {
     const { year, department } = req.query;
 
@@ -573,9 +559,7 @@ router.get('/students/export', auth, async (req, res) => {
 // 6. Clear All Feedback (unchanged)
 // ------------------------------------------------------------
 router.delete('/feedback/clear-all', auth, async (req, res) => {
-  if(req.user.role!=="Admin"){
-      return res.status(401).json({message:"Invalid role to access."})
-    }
+  
   try {
     const { confirm } = req.body;
 
@@ -615,9 +599,7 @@ router.delete('/feedback/clear-all', auth, async (req, res) => {
 // 7. Promote All Active Students
 // ------------------------------------------------------------
 router.put("/students/promote-all", async (req, res) => {
-  if(req.user.role!=="Admin"){
-      return res.status(401).json({message:"Invalid role to access."})
-    }
+  
     try {
 
         // Delete previously passed out students
@@ -687,9 +669,7 @@ router.put("/students/promote-all", async (req, res) => {
 // 8. Reverse Promotion
 // ------------------------------------------------------------
 router.put('/students/reverse-promotion', async (req, res) => {
-  if(req.user.role!=="Admin"){
-      return res.status(401).json({message:"Invalid role to access."})
-    }
+  
   try {
 
     const down2to1 = await Student.updateMany(
@@ -737,9 +717,7 @@ router.put('/students/reverse-promotion', async (req, res) => {
 // 9. Delete Student (with confirmation & related feedback removal)
 // ------------------------------------------------------------
 router.delete('/students/:regno', async (req, res) => {
-  if(req.user.role!=="Admin"){
-      return res.status(401).json({message:"Invalid role to access."})
-    }
+  
   try {
     const { regno } = req.params;
     const { confirmation } = req.body;
