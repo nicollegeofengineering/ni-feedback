@@ -58,6 +58,7 @@ export default function AdminStudents() {
     }
 
     try {
+      setLoading(true)
       const token = localStorage.getItem('token');
       const response = await axios.put(
         `${API_BASE}/api/admin/students/promote-all`,
@@ -68,6 +69,8 @@ export default function AdminStudents() {
       fetchStudents();
     } catch (err) {
       alert(err.response?.data?.message || 'Promotion failed');
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -80,6 +83,7 @@ export default function AdminStudents() {
     }
 
     try {
+      setLoading(true)
       const token = localStorage.getItem('token');
       const response = await axios.put(
         `${API_BASE}/api/admin/students/reverse-promotion`,
@@ -90,6 +94,8 @@ export default function AdminStudents() {
       fetchStudents();
     } catch (err) {
       alert(err.response?.data?.message || 'Reverse promotion failed');
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -102,6 +108,7 @@ export default function AdminStudents() {
     }
 
     try {
+      setLoading(true)
       const token = localStorage.getItem('token');
       await axios.delete(
         `${API_BASE}/api/admin/students/${regno}`,
@@ -114,6 +121,8 @@ export default function AdminStudents() {
       fetchStudents();
     } catch (err) {
       alert(err.response?.data?.message || 'Deletion failed');
+    }finally{
+      setLoading(false)
     }
   };
 
