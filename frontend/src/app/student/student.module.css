@@ -1,0 +1,485 @@
+:root {
+  --primary: #4A90D9;
+  --primary-light: #EBF3FB;
+  --primary-dark: #3A7BC8;
+  --danger: #E74C3C;
+  --gray-50: #FAFBFC;
+  --gray-100: #F0F2F5;
+  --gray-200: #E4E7EC;
+  --gray-300: #CDD2D9;
+  --gray-500: #8A94A6;
+  --gray-700: #4A5568;
+  --gray-900: #1A202C;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(74, 144, 217, 0.08);
+  --shadow-lg: 0 4px 20px rgba(74, 144, 217, 0.12);
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header */
+.mainHeader {
+  background: white;
+  border-radius: var(--radius);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.logoArea {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logoArea h1 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.logoutBtn {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-200);
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logoutBtn:hover {
+  background: var(--gray-200);
+  color: var(--gray-900);
+}
+
+.headerInfo {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--gray-200);
+}
+
+.headerInfo strong {
+  color: var(--gray-700);
+}
+
+/* Main form card */
+.formCard {
+  background: white;
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
+}
+
+.introText {
+  margin-bottom: 2rem;
+}
+
+.introText h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  color: var(--gray-900);
+}
+
+.introText p {
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+.subjectsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.submitRow {
+  margin-top: 2rem;
+}
+
+.btnPrimary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(74, 144, 217, 0.3);
+}
+
+.btnPrimary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Already submitted */
+.alreadySubmitted {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.submittedIcon {
+  margin-bottom: 1rem;
+}
+
+.alreadySubmitted h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--gray-900);
+}
+
+.alreadySubmitted p {
+  color: var(--gray-500);
+  max-width: 400px;
+  margin: 0 auto 1.5rem;
+}
+
+.errorMsg {
+  color: var(--danger);
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Error Card */
+.errorCard {
+  background: white;
+  border-radius: var(--radius);
+  padding: 3rem 2rem;
+  text-align: center;
+  max-width: 500px;
+  margin: 2rem auto;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-200);
+}
+
+.errorCard h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--gray-900);
+}
+
+.errorCard p {
+  color: var(--gray-500);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.btnSecondary {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-200);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnSecondary:hover {
+  background: var(--gray-200);
+}
+
+.placeholderMsg {
+  text-align: center;
+  color: var(--gray-500);
+  padding: 2rem 0;
+}
+
+/* Subject Detail Report - Matching Screenshot */
+.subjectSelect {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  border: 1.5px solid #E4E7EC;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: #FFFFFF;
+  color: #1A202C;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  margin-bottom: 1rem;
+}
+
+.subjectSelect:hover {
+  border-color: #CDD2D9;
+}
+
+.subjectSelect:focus {
+  outline: none;
+  border-color: #4A90D9;
+  box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.1);
+}
+
+.subjectDetailContainer {
+  margin-top: 0.5rem;
+}
+
+/* Subject Header - Like Screenshot */
+.subjectHeader {
+  margin-bottom: 1rem;
+}
+
+.subjectHeader h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1A202C;
+  margin: 0;
+}
+
+.subjectHeader .facultyName {
+  font-weight: 400;
+  color: #4A5568;
+  margin-left: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Detail Table - Matching Screenshot */
+.detailTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.5rem;
+}
+
+.detailTable thead {
+  background: #F7F9FC;
+}
+
+.detailTable th {
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #4A5568;
+  border-bottom: 2px solid #E4E7EC;
+}
+
+.detailTable td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 1px solid #F0F2F5;
+  color: #1A202C;
+  font-size: 0.9rem;
+}
+
+.detailTable tbody tr:hover {
+  background: #F7F9FC;
+}
+
+.detailTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Comments Section - Matching Screenshot */
+.commentsSection {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+}
+
+.commentsSection h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1A202C;
+  margin-bottom: 0.6rem;
+}
+
+.commentsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.commentItem {
+  background: #F7F9FC;
+  border: 1px solid #E4E7EC;
+  border-left: 3px solid #4A90D9;
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.88rem;
+  color: #1A202C;
+  line-height: 1.5;
+}
+
+.commentItem:last-child {
+  margin-bottom: 0;
+}
+
+/* No Data / Loading States */
+.loadingDetails {
+  text-align: center;
+  padding: 2rem;
+  color: #8A94A6;
+  font-size: 0.95rem;
+}
+
+.noComments {
+  text-align: center;
+  color: #8A94A6;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Scrollbar for comments */
+.commentsList::-webkit-scrollbar {
+  width: 4px;
+}
+
+.commentsList::-webkit-scrollbar-track {
+  background: #F7F9FC;
+  border-radius: 2px;
+}
+
+.commentsList::-webkit-scrollbar-thumb {
+  background: #CDD2D9;
+  border-radius: 2px;
+}
+
+.commentsList::-webkit-scrollbar-thumb:hover {
+  background: #8A94A6;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .subjectSelect {
+    background: #1F2937;
+    border-color: #374151;
+    color: #F3F4F6;
+  }
+
+  .subjectSelect:hover {
+    border-color: #4B5563;
+  }
+
+  .subjectSelect:focus {
+    border-color: #4A90D9;
+  }
+
+  .subjectHeader h4 {
+    color: #F3F4F6;
+  }
+
+  .subjectHeader .facultyName {
+    color: #9CA3AF;
+  }
+
+  .detailTable thead {
+    background: #111827;
+  }
+
+  .detailTable th {
+    color: #9CA3AF;
+    border-bottom-color: #374151;
+  }
+
+  .detailTable td {
+    color: #F3F4F6;
+    border-bottom-color: #374151;
+  }
+
+  .detailTable tbody tr:hover {
+    background: #111827;
+  }
+
+  .commentsSection h4 {
+    color: #F3F4F6;
+  }
+
+  .commentItem {
+    background: #111827;
+    border-color: #374151;
+    color: #F3F4F6;
+  }
+
+  .noComments {
+    color: #6B7280;
+  }
+
+  .loadingDetails {
+    color: #6B7280;
+  }
+
+  .commentsList::-webkit-scrollbar-track {
+    background: #111827;
+  }
+
+  .commentsList::-webkit-scrollbar-thumb {
+    background: #4B5563;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .subjectSelect {
+    max-width: 100%;
+  }
+
+  .detailTable {
+    font-size: 0.8rem;
+  }
+
+  .detailTable th,
+  .detailTable td {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .commentsList {
+    max-height: 150px;
+  }
+}
+/* Responsive */
+@media (max-width: 640px) {
+  .headerContent {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .logoArea h1 {
+    font-size: 0.95rem;
+  }
+  
+  .formCard {
+    padding: 1rem;
+  }
+  
+  .headerInfo {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .introText h2 {
+    font-size: 1.25rem;
+  }
+}
