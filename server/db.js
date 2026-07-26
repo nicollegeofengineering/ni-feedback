@@ -1,25 +1,34 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+const mongoose = require("mongoose");
+require("dotenv").config();
 
-dotenv.config();
+mongoose.set("bufferCommands", false);
 
-// Global cache for both connections
 let cached = global._mongoose;
+
 if (!cached) {
   cached = global._mongoose = {
-    feedback: { conn: null, promise: null },
-    nicetech: { conn: null },
+    feedback: {
+      conn: null,
+      promise: null,
+    },
+    nicetech: {
+      conn: null,
+    },
   };
 }
 
-// ---------- connectDB (feedback_system) ----------
+// ======================================================
+// Feedback Database
+// ======================================================
+
 async function connectDB() {
   if (cached.feedback.conn) return cached.feedback.conn;
 
   if (!cached.feedback.promise) {
-    mongoose.set("bufferCommands", false);
     cached.feedback.promise = mongoose
-      .connect(process.env.MONGODB_URI, { dbName: "feedback_system" })
+      .connect(process.env.MONGODB_URI, {
+        dbName: "feedback_system",
+      })
       .then((m) => {
         console.log("✅ Connected to Feedback Database");
         return m;
@@ -37,7 +46,10 @@ async function connectDB() {
   return cached.feedback.conn;
 }
 
-// ---------- nicetechDB (NICETECH) ----------
+// ======================================================
+// NICETECH Database
+// ======================================================
+
 function createNicetechConnection() {
   if (cached.nicetech.conn) return cached.nicetech.conn;
 
@@ -54,11 +66,13 @@ function createNicetechConnection() {
   });
 
   cached.nicetech.conn = conn;
+
   return conn;
 }
 
-// Create the NICETECH connection immediately (cached globally)
 const nicetechDB = createNicetechConnection();
 
-// ---------- Exports (same names as before) ----------
-export { connectDB, nicetechDB };
+module.exports = {
+  connectDB,
+  nicetechDB,
+};
