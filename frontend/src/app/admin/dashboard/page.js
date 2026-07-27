@@ -180,6 +180,7 @@ export default function AdminDashboard() {
                 <option value="IT">IT</option>
                 <option value="MECH">MECH</option>
                 <option value="EEE">EEE</option>
+                <option value="CIVIL">CIVIL</option>
               </select>
               <select
                 value={filters.year}

@@ -38,47 +38,119 @@ const feedbackSchema = new mongoose.Schema({
     required: true,
     index: true
   },
+
   ratings: {
-    regularClassAttendance: { type: Number, required: true, min: 1, max: 5 },
-    classPunctuality: { type: Number, required: true, min: 1, max: 5 },
-    teachingSincerity: { type: Number, required: true, min: 1, max: 5 },
-    subjectKnowledge: { type: Number, required: true, min: 1, max: 5 },
-    conceptExplanation: { type: Number, required: true, min: 1, max: 5 },
-    teachingMethod: { type: Number, required: true, min: 1, max: 5 },
-    teachingAidsUsage: { type: Number, required: true, min: 1, max: 5 },
-    practicalExamples: { type: Number, required: true, min: 1, max: 5 },
-    studentParticipation: { type: Number, required: true, min: 1, max: 5 },
-    doubtClarification: { type: Number, required: true, min: 1, max: 5 },
-    syllabusCompletion: { type: Number, required: true, min: 1, max: 5 },
-    classTestsConduct: { type: Number, required: true, min: 1, max: 5 },
-    testPaperEvaluation: { type: Number, required: true, min: 1, max: 5 },
-    assignmentsEffectiveness: { type: Number, required: true, min: 1, max: 5 },
-    classroomDiscipline: { type: Number, required: true, min: 1, max: 5 },
-    professionalBehaviour: { type: Number, required: true, min: 1, max: 5 },
-    studentApproachability: { type: Number, required: true, min: 1, max: 5 },
-    studyMaterials: { type: Number, required: true, min: 1, max: 5 },
-    revisionBeforeExams: { type: Number, required: true, min: 1, max: 5 },
-    classPreparation: { type: Number, required: true, min: 1, max: 5 }
+    subjectKnowledge: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    clarityOfExplanation: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    willingnessToHelp: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    classRegularity: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    clarityBeyondNotes: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    lectureOrganization: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    presentationSpeed: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    encouragesQuestions: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    teacherBehaviour: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    blackboardUsage: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    teacherSincerity: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    fairnessOfEvaluation: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    promptnessOfEvaluation: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    },
+    overallTeachingEffectiveness: {
+      type: Number,
+      required: true,
+      min: 1,
+      max: 5
+    }
   },
+
   comment: {
     type: String,
     default: '',
     maxlength: 500
   },
+
   submittedAt: {
     type: Date,
     default: Date.now
   }
 });
 
-// ---------- CORRECT UNIQUE INDEX ----------
-// Prevents duplicate feedback for the same student → subject → faculty in the same semester
+// Prevent duplicate feedback for the same student, subject, faculty, year and semester
 feedbackSchema.index(
-  { studentRegno: 1, subjectCode: 1, facultyName: 1, year: 1, semester: 1 },
+  {
+    studentRegno: 1,
+    subjectCode: 1,
+    facultyName: 1,
+    year: 1,
+    semester: 1
+  },
   { unique: true }
 );
 
-// Other indexes for performance
+// Performance indexes
 feedbackSchema.index({ subjectCode: 1, submittedAt: -1 });
 feedbackSchema.index({ department: 1, year: 1, semester: 1 });
 

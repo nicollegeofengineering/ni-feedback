@@ -165,7 +165,12 @@ export default function AdminStudents() {
     <AdminLayout>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2>Student Management</h2>
+          <div className={styles.headerTitle}>
+            <h2>Student Management</h2>
+            <span className={styles.studentCount}>
+                  Total Students: {students.length}
+            </span>
+          </div>
           <div className={styles.filters}>
             <select value={filters.year} onChange={(e) => handleFilterChange('year', e.target.value)}>
               <option value="">All Years</option>
@@ -182,6 +187,7 @@ export default function AdminStudents() {
               <option value="IT">IT</option>
               <option value="MECH">MECH</option>
               <option value="EEE">EEE</option>
+              <option value="CIVIL">CIVIL</option>
             </select>
             <select value={filters.submitted} onChange={(e) => handleFilterChange('submitted', e.target.value)}>
               <option value="">All Students</option>

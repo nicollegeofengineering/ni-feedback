@@ -328,6 +328,7 @@ export default function SignupPage() {
                 <option value="IT">Information Technology</option>
                 <option value="MECH">Mechanical Engineering</option>
                 <option value="EEE">Electrical & Electronics</option>
+                <option value="CIVIL">Civil Engineering</option>
               </select>
             </div>
 
@@ -361,7 +362,7 @@ export default function SignupPage() {
         ) : (
           <div className={styles.otpSection}>
             <div className={styles.otpIcon}>
-              <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+              <svg width="60" height="64" viewBox="0 0 64 64" fill="none">
                 <circle cx="32" cy="32" r="30" stroke="#2563eb" strokeWidth="2" fill="#eff6ff" />
                 <path d="M20 32L28 40L44 24" stroke="#2563eb" strokeWidth="3" strokeLinecap="round" />
               </svg>

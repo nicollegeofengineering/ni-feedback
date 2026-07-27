@@ -119,6 +119,9 @@
 .content {
   padding: 2rem;
 }
+.overlay {
+  display: none;
+}
 
 @media (max-width: 768px) {
   .sidebar {
@@ -139,5 +142,21 @@
   
   .content {
     padding: 1rem;
+  }
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 998;
+  }
+
+  .sidebar {
+    z-index: 999;
+  }
+
+  .topbar {
+    position: relative;
+    z-index: 1000;
   }
 }

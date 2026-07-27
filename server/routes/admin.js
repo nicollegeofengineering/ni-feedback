@@ -15,26 +15,20 @@ const auth = require('../middleware/auth');
 // 0. Constants – all 20 question keys
 // ------------------------------------------------------------
 const QUESTION_KEYS = [
-  'regularClassAttendance',
-  'classPunctuality',
-  'teachingSincerity',
   'subjectKnowledge',
-  'conceptExplanation',
-  'teachingMethod',
-  'teachingAidsUsage',
-  'practicalExamples',
-  'studentParticipation',
-  'doubtClarification',
-  'syllabusCompletion',
-  'classTestsConduct',
-  'testPaperEvaluation',
-  'assignmentsEffectiveness',
-  'classroomDiscipline',
-  'professionalBehaviour',
-  'studentApproachability',
-  'studyMaterials',
-  'revisionBeforeExams',
-  'classPreparation'
+  'clarityOfExplanation',
+  'willingnessToHelp',
+  'classRegularity',
+  'clarityBeyondNotes',
+  'lectureOrganization',
+  'presentationSpeed',
+  'encouragesQuestions',
+  'teacherBehaviour',
+  'blackboardUsage',
+  'teacherSincerity',
+  'fairnessOfEvaluation',
+  'promptnessOfEvaluation',
+  'overallTeachingEffectiveness'
 ];
 
 // Helper: build $group stage for averages
@@ -75,7 +69,8 @@ router.get('/dashboard', auth, async (req, res) => {
     const basePipeline = Object.keys(match).length ? [{ $match: match }] : [];
 
     // Total Responses
-    const totalResponses = await Feedback.countDocuments(match);
+    const respondedStudents = await Feedback.distinct('studentRegno', match);
+    const totalResponses = respondedStudents.length;
 
     // Overall Average per question (global)
     const avgGroup = buildAvgGroup('');

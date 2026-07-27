@@ -12,27 +12,23 @@ import { useRouter } from 'next/navigation';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:4000';
 const QUESTION_KEYS = [
-  'regularClassAttendance',
-  'classPunctuality',
-  'teachingSincerity',
   'subjectKnowledge',
-  'conceptExplanation',
-  'teachingMethod',
-  'teachingAidsUsage',
-  'practicalExamples',
-  'studentParticipation',
-  'doubtClarification',
-  'syllabusCompletion',
-  'classTestsConduct',
-  'testPaperEvaluation',
-  'assignmentsEffectiveness',
-  'classroomDiscipline',
-  'professionalBehaviour',
-  'studentApproachability',
-  'studyMaterials',
-  'revisionBeforeExams',
-  'classPreparation'
+  'clarityOfExplanation',
+  'willingnessToHelp',
+  'classRegularity',
+  'clarityBeyondNotes',
+  'lectureOrganization',
+  'presentationSpeed',
+  'encouragesQuestions',
+  'teacherBehaviour',
+  'blackboardUsage',
+  'teacherSincerity',
+  'fairnessOfEvaluation',
+  'promptnessOfEvaluation',
+  'overallTeachingEffectiveness'
+
 ];
+
 
 export default function StudentPage() {
   const { user, logout } = useAuth();
